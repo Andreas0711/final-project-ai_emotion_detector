@@ -27,6 +27,10 @@ def sent_emotion():
     sadness = response['sadness']
     dominant_emotion = response['dominant_emotion']
 
+    # Check if dominant_emotion is None
+    if dominant_emotion is None:
+        return 'Invalid text! Please try again!'
+    
     # Format the output    
     output = (
         f"For the given statement, the system response is 'anger': {anger}, "
