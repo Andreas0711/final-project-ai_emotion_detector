@@ -1,3 +1,5 @@
+'''Final Project Emotion Detection, deployed with flask and using Watson API
+'''
 # Import Flask, render_template, request from the flask pramework package
 from flask import Flask, render_template, request
 # Import the emotoin_detector function from the package created
@@ -8,9 +10,9 @@ app = Flask("Emotion Detection")
 
 @app.route("/emotionDetector")
 def sent_emotion():
-    ''' This code receives the text from the HTML interface and 
+    ''' This code receives the text from the HTML interface and
         runs emotion detector over it using emotion_detector()
-        function. The output returned shows the percentage of 
+        function. The output returned shows the percentage of
         all emotions and the dominant emotion
     '''
     # Retrieve the text to analyze from the request arguments
@@ -19,7 +21,7 @@ def sent_emotion():
     # Pass the text to the emotion_detector function and store the response
     response = emotion_detector(text_to_analyze)
 
-    # Extract the label and score from the response and make 
+    # Extract the label and score from the response and make
     anger = response['anger']
     disgust = response['disgust']
     fear = response['fear']
@@ -30,8 +32,8 @@ def sent_emotion():
     # Check if dominant_emotion is None
     if dominant_emotion is None:
         return 'Invalid text! Please try again!'
-    
-    # Format the output    
+
+    # Format the output
     output = (
         f"For the given statement, the system response is 'anger': {anger}, "
         f"'disgust': {disgust}, 'fear': {fear}, 'joy': {joy} and "
